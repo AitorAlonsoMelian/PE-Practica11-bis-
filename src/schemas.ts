@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose'
-
+import validator from 'validator';
 
 
 interface user {
@@ -21,11 +21,21 @@ const UserSchema = new mongoose.Schema({
   },
   edad: {
     type: Number,
+    validate: (value: number) => {
+      if (value < 0) {
+        throw new Error('No se pueden insertar edades negativas')
+      }
+    }
   },
   email: {
     type: String,
     required: true,
     unique: true,
+    validate: (value: string) => {
+      if (!validator.isEmail(value)) {
+        throw new Error('El email no es adecuado.')
+      }
+    }
   },
   contraseña: {
     type: String,

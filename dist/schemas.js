@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 const mongoose = require("mongoose");
+const validator_1 = require("validator");
 const UserSchema = new mongoose.Schema({
     nombre: {
         type: String,
@@ -13,11 +14,21 @@ const UserSchema = new mongoose.Schema({
     },
     edad: {
         type: Number,
+        validate: (value) => {
+            if (value < 0) {
+                throw new Error('No se pueden insertar edades negativas');
+            }
+        }
     },
     email: {
         type: String,
         required: true,
         unique: true,
+        validate: (value) => {
+            if (!validator_1.default.isEmail(value)) {
+                throw new Error('El email no es adecuado.');
+            }
+        }
     },
     contraseña: {
         type: String,
