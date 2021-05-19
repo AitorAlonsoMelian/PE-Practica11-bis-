@@ -1,1 +1,3 @@
-[![Tests](https://github.com/AitorAlonsoMelian/Typescript-Template/actions/workflows/node.js.yml/badge.svg)](https://github.com/AitorAlonsoMelian/Typescript-Template/actions/workflows/node.js.yml)
+# Práctica 11 (bis) 
+
+## (Resuelto el ejercicio del miércoles PE 101)
