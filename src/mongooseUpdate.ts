@@ -11,8 +11,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/dsi-assesment', {
   console.log('Something went wrong when conecting to the database');
 });
 
-User.deleteOne({nombre: 'Juan'}).then((data) => {
-    console.log(data)
+User.updateOne({email: 'juandd@gmail.com'}, {
+    nombre: 'Juan',
+    apellidos: 'Díaz Díaz',
+    edad: 30,
+    email: 'juandd@gmail.com',
+    contraseña: 'Qwerty_'
+}).then((result) => {
+    console.log(result)
 }).catch((error) => {
     console.log(error)
 })
